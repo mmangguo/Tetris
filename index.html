@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta content="ff" name="author" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="./style.css" />
+    <title>🎮Tetris</title>
+</head>
+
+<body>
+    <header>
+        <p id="Tetris">Tetris</p>
+    </header>
+    <div id="wrapper">
+
+        <!-- 头部信息 -->
+        <div id="top">
+            <p id="round">round:</p>
+            <p id="score">score:</p>
+            <!-- <div id="info"></div> -->
+        </div>
+
+        <div id="container">
+            <!-- 用户自定义 -->
+            <div id="userchange">
+                <form id="form">
+                    <div style="font-family: Consolas;">
+                        <label for="level">level</label>
+                        <input type="text" id="inputbox" placeholder="easy / medium / hard">
+                    </div>
+                    <div style="font-family: Consolas;">
+                        <label for="color">color</label>
+                        <input type="text" id="inputbox" placeholder="light / dark">
+                    </div>
+                    <div>
+                        <button id="button_1" type="submit">submit</button>
+                    </div>
+                </form>
+                <div id="start">
+                    <button id="button_1" type="button" onclick="user.startgame()">start</button>
+                </div>
+                <div id="restart">
+                    <button id="button_1" type="button" onclick="user.restart(user.game)">restart</button>
+                </div>
+            </div>
+
+            <!-- 游戏 -->
+            <div id="app"></div>
+
+            <!-- 排行榜 -->
+            <div id="rank">
+                <p style="font-family: Consolas;">
+                    rank
+                </p>
+            </div>
+        </div>
+</body>
+
+</html>
+<script type="text/javascript" src="./game.js"></script>
+<script type="text/javascript" src="./block_json.js"></script>
+<script type="text/javascript" src="./block.js"></script>
+<script type="text/javascript" src="./map.js"></script>
+<script type="text/javascript" src="./user.js"></script>
+<script type="text/javascript" src="./rank.js"></script>
+<script type="text/javascript">
+    var user = new User();
+    const form=document.getElementById('form');
+    form.addEventListener('submit',(e)=>{
+        console.log('submit')
+        //防止表单的默认提交
+        e.preventDefault();
+        user.setting();
+    })
+</script>
